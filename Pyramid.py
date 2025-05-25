@@ -11,18 +11,15 @@ BRICKS_IN_BASE = 14     # The number of bricks in the base
 def main():
     canvas = Canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
     # TODO, your code here
-    bricks_in_base=BRICKS_IN_BASE
-    prv_top_y=0
-    while bricks_in_base!=0:
-        left_x=CANVAS_WIDTH/bricks_in_base
-        if bricks_in_base<BRICKS_IN_BASE:
-            top_y=CANVAS_HEIGHT-(prv_top_y+BRICK_HEIGHT)
-            bottom_y=BRICK_HEIGHT
-        else:
-            top_y=CANVAS_HEIGHT-BRICK_HEIGHT
-            bottom_y=CANVAS_HEIGHT
-        for i in range(bricks_in_base):
+    for row in range(BRICKS_IN_BASE):
+        bricks_in_row=BRICKS_IN_BASE-row
+        y_top=CANVAS_HEIGHT-(row+1)*BRICK_HEIGHT
+        start_x=(CANVAS_WIDTH-bricks_in_row*BRICK_WIDTH)/2
+        for brick in range(bricks_in_row):
+            left_x=start_x+brick*BRICK_WIDTH
+            top_y=y_top
             right_x=left_x+BRICK_WIDTH
+            bottom_y=top_y+BRICK_HEIGHT
             canvas.create_rectangle(
                 left_x,
                 top_y,
@@ -31,9 +28,6 @@ def main():
                 'yellow',
                 'black'
             )
-            left_x=right_x
-        bricks_in_base-=1
-        prv_top_y=top_y
 
 if __name__ == '__main__':
     main()
