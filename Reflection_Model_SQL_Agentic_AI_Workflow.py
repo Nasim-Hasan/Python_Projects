@@ -159,24 +159,26 @@ def run_sql_workflow(
 
     # 1) Schema
     schema = utils.get_schema(db_path)
-    utils.print_html(
-        schema,
-        title="📘 Step 1 — Extract Database Schema"
-    )
+    #utils.print_html(
+        #schema,
+        #title="📘 Step 1 — Extract Database Schema"
+    #)
+    print(schema,title="📘 Step 1 — Extract Database Schema")
 
     # 2) Generate SQL (V1)
     sql_v1 = generate_sql(question, schema, model_generation)
-    utils.print_html(
-        sql_v1,
-        title="🧠 Step 2 — Generate SQL (V1)"
-    )
-
+    # utils.print_html(
+    #     sql_v1,
+    #     title="🧠 Step 2 — Generate SQL (V1)"
+    # )
+    print(sql_v1,title="🧠 Step 2 — Generate SQL (V1)")
     # 3) Execute V1
     df_v1 = utils.execute_sql(sql_v1, db_path)
-    utils.print_html(
-        df_v1,
-        title="🧪 Step 3 — Execute V1 (SQL Output)"
-    )
+    # utils.print_html(
+    #     df_v1,
+    #     title="🧪 Step 3 — Execute V1 (SQL Output)"
+    # )
+    print(df_v1,title="🧪 Step 3 — Execute V1 (SQL Output)")
 
     # 4) Reflect on V1 with execution feedback → refine to V2
     feedback, sql_v2 = refine_sql_external_feedback(
@@ -186,26 +188,29 @@ def run_sql_workflow(
         schema=schema,
         model=model_evaluation,
     )
-    utils.print_html(
-        feedback,
-        title="🧭 Step 4 — Reflect on V1 (Feedback)"
-    )
-    utils.print_html(
-        sql_v2,
-        title="🔁 Step 4 — Refined SQL (V2)"
-    )
+    # utils.print_html(
+    #     feedback,
+    #     title="🧭 Step 4 — Reflect on V1 (Feedback)"
+    # )
+    # utils.print_html(
+    #     sql_v2,
+    #     title="🔁 Step 4 — Refined SQL (V2)"
+    # )
+    print(feedback,title="🧭 Step 4 — Reflect on V1 (Feedback)")
+    print(sql_v2,title="🔁 Step 4 — Refined SQL (V2)")
 
     # 5) Execute V2
     df_v2 = utils.execute_sql(sql_v2, db_path)
-    utils.print_html(
-        df_v2,
-        title="✅ Step 5 — Execute V2 (Final Answer)"
-    )
-
-    #Running the SQL Workflow
-    run_sql_workflow(
-    "products.db", 
-    "Which color of product has the highest total sales?",
-    model_generation="openai:gpt-4.1",
-    model_evaluation="openai:gpt-4.1"
+    # utils.print_html(
+    #     df_v2,
+    #     title="✅ Step 5 — Execute V2 (Final Answer)"
+    # )
+    print(df_v2,title="✅ Step 5 — Execute V2 (Final Answer)")
+    
+#Running the SQL Workflow
+run_sql_workflow(
+"products.db", 
+"Which color of product has the highest total sales?",
+model_generation="openai:gpt-4.1",
+model_evaluation="openai:gpt-4.1"
 )
