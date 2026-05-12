@@ -1,7 +1,5 @@
 # @title Load the imports
 import keras
-import ml_edu.experiment
-import ml_edu.results
 import numpy as np
 import pandas as pd
 import plotly.express as px
