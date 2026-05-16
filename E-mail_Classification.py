@@ -109,10 +109,10 @@ def main() -> None:
     #..Model's Accuracy Calculation
     accuracy = determine_accuracy()
     print(f"Model Accuracy: {accuracy}\n")
-    #..Model's Recall/True Positive rate (TPR) Calculation
+    #..Model's Recall/True Positive Rate (TPR) Calculation
     recall = determine_tpr()
     print(f"Model Recall/True Positive Rate (TPR): {recall}\n")
-    #..Model's False Alarm/False Positive rate (FPR) Calculation
+    #..Model's False Alarm/False Positive Rate (FPR) Calculation
     fpr = determine_fpr()
     print(f"Model False Alarm/False Positive Rate (FPR): {fpr}\n")
     #..Model's Precision Calculation
