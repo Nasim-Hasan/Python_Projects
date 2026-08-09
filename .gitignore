@@ -1,0 +1,8 @@
+# Ignore environment variables and secrets
+.env
+*.local
+
+# Ignore log files and build outputs
+*.log
+dist/
+build/
